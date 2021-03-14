@@ -31,17 +31,20 @@ print(roll_dice())
 def check_for_error(board):
     # checks for obvious errors
     errorInProgram = False
-    
+    #sum of all positive not equal to 15, player 1s pieces,
+    #sum of all negative not equal to -15, player -1's pieces
     if (sum(board[board>0]) != 15 or sum(board[board<0]) != -15):
         # too many or too few pieces on board
         errorInProgram = True
         print("Too many or too few pieces on board!")
     return errorInProgram
+
 def game_over(board):
     # returns True if the game is over    
     return board[27]==15 or board[28]==-15
 
 def pretty_print(board):
+    #prints board, as BG Board would actually look
     string = str(np.array2string(board[1:13])+'\n'+
                  np.array2string(board[24:12:-1])+'\n'+
                  np.array2string(board[25:29]))
